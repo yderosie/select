@@ -69,17 +69,11 @@ void			espace(t_liste **first, int *x, int *y, t_max_xy *max)
 			place->curseur = 0;
 		if (place->x == *x && place->y == *y)
 		{
-			if (place->select == 0)
-				place->select = 1;
-			else
-				place->select = 0;
+			place->select = (place->select == 0) ? 1 : 0;
+			if (place->next == NULL)
+				(*first)->curseur = 1;
 		}
-		if (place->next != NULL)
-		{
-			place = place->next;
-		}
-		else
-			break ;
+		place = place->next;
 	}
 	espace2(x, y, max);
 }
